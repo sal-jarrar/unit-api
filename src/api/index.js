@@ -22,8 +22,7 @@ export const creatApplication = (appData) =>
 export const getAllCustomers = () => API.get('/customers', config);
 export const getAllApplications = () =>
   API.get(`/applications?page[limit]=10&page[offset]=0&include=org`, config);
-export const updatePost = (id, updatedPost) =>
-  API.patch(`/posts/${id}`, updatedPost);
+export const getAllAccounts = () => API.get('/accounts', config);
 export const deletePost = (id) => API.delete(`/posts/${id}`);
 
 export const signIn = (formData) => API.post('/user/signin', formData);

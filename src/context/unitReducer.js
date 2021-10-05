@@ -10,6 +10,11 @@ const unitReducer = (state, action) => {
         ...state,
         applications: action.payload,
       };
+    case 'GET_ACCOUNTS':
+      return {
+        ...state,
+        accounts: action.payload,
+      };
     case 'CREATE_APPLICATION':
       return {
         ...state,

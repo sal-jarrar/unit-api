@@ -1,7 +1,12 @@
 import { useReducer, createContext } from 'react';
 import unitReducer from './unitReducer';
 
-import { creatApplication, getAllApplications, getAllCustomers } from '../api';
+import {
+  creatApplication,
+  getAllAccounts,
+  getAllApplications,
+  getAllCustomers,
+} from '../api';
 
 const initialState = {};
 
@@ -33,9 +38,20 @@ export const Provider = ({ children }) => {
       console.log('ERROR', e);
     }
   };
+  const getAccounts = async () => {
+    try {
+      const { data } = await getAllAccounts();
+
+      dispatch({
+        type: 'GET_ACCOUNTS',
+        payload: data.data,
+      });
+    } catch (e) {
+      console.log('ERROR', e);
+    }
+  };
   const createApplication = async (appData) => {
     try {
-      console.log(appData, 'DA');
       const res = await creatApplication(appData);
 
       dispatch({
@@ -49,7 +65,13 @@ export const Provider = ({ children }) => {
 
   return (
     <UnitContext.Provider
-      value={{ unitState, getCustomers, getApplications, createApplication }}
+      value={{
+        unitState,
+        getCustomers,
+        getApplications,
+        createApplication,
+        getAccounts,
+      }}
     >
       {children}
     </UnitContext.Provider>

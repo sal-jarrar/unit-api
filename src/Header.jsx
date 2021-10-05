@@ -16,8 +16,8 @@ const Header = () => {
               <LinkContainer to='/application'>
                 <Nav.Link>Applications</Nav.Link>
               </LinkContainer>
-              <LinkContainer to='/contact'>
-                <Nav.Link>Contact</Nav.Link>
+              <LinkContainer to='/accounts'>
+                <Nav.Link>Accounts</Nav.Link>
               </LinkContainer>
 
               <LinkContainer to='/cart'>
