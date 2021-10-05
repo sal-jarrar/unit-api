@@ -35,15 +35,15 @@ export const Provider = ({ children }) => {
   };
   const createApplication = async (appData) => {
     try {
-      console.log(appData, 'ddd');
-      const { data } = await creatApplication(appData);
+      console.log(appData, 'DA');
+      const res = await creatApplication(appData);
 
       dispatch({
         type: 'CREATE_APPLICATION',
-        payload: data.data,
+        payload: res,
       });
     } catch (e) {
-      console.log('ERROR', e.response.data.message);
+      console.log('ERROR', e.response.data.errors[0]);
     }
   };
 

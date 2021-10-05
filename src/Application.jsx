@@ -38,101 +38,103 @@ const Application = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
-      type: 'businessApplication',
-      attributes: {
-        name: businessName,
-        address: {
-          street: businessStreet,
-          city: businessCity,
-          state: businessState,
-          postalCode: businessPostalCode,
-          country: businessCountry,
-        },
-        phone: {
-          countryCode: '1',
-          number: businessNumber,
-        },
-        stateOfIncorporation: 'CA',
-        entityType: businessType,
-        ip: '127.0.0.1',
-        ein,
-        officer: {
-          fullName: {
-            first: firstName,
-            last: lastName,
-          },
-          dateOfBirth,
-          ssn,
-          email,
-          phone: {
-            countryCode: '1',
-            number: officerNumber,
-          },
+      data: {
+        type: 'businessApplication',
+        attributes: {
+          name: businessName,
           address: {
-            street: officerStreet,
-            city: officerCity,
-            state: officerState,
-            postalCode: officerPostalCode,
-            country: officerCountry,
+            street: businessStreet,
+            city: businessCity,
+            state: businessState,
+            postalCode: businessPostalCode,
+            country: 'US',
           },
-        },
-        contact: {
-          fullName: {
-            first: firstName,
-            last: lastName,
-          },
-          email,
           phone: {
             countryCode: '1',
-            number: officerNumber,
+            number: businessNumber,
           },
-        },
-        beneficialOwners: [
-          {
+          stateOfIncorporation: 'CA',
+          entityType: businessType,
+          ip: '127.0.0.1',
+          ein,
+          officer: {
             fullName: {
-              first: 'James',
-              last: 'Smith',
+              first: firstName,
+              last: lastName,
             },
-            dateOfBirth: '2012-04-05',
-            ssn: '574567625',
-            email: 'james@unit-finance.com',
+            dateOfBirth,
+            ssn,
+            email,
             phone: {
               countryCode: '1',
-              number: '2025550127',
+              number: officerNumber,
             },
             address: {
-              street: '650 Allerton Street',
-              city: 'Redwood City',
-              state: 'CA',
-              postalCode: '94063',
+              street: officerStreet,
+              city: officerCity,
+              state: officerState,
+              postalCode: officerPostalCode,
               country: 'US',
             },
           },
-          {
+          contact: {
             fullName: {
-              first: 'Richard',
-              last: 'Hendricks',
+              first: firstName,
+              last: lastName,
             },
-            dateOfBirth: '2012-04-03',
-            ssn: '574572795',
-            email: 'richard@unit-finance.com',
+            email,
             phone: {
               countryCode: '1',
-              number: '2025550158',
-            },
-            address: {
-              street: '470 Allerton Street',
-              city: 'Redwood City',
-              state: 'CA',
-              postalCode: '94063',
-              country: 'US',
+              number: officerNumber,
             },
           },
-        ],
-        tags: {
-          userId: '2ab1f266-04b9-41fb-b728-cd1962bca52b',
+          beneficialOwners: [
+            {
+              fullName: {
+                first: 'James',
+                last: 'Smith',
+              },
+              dateOfBirth: '2012-04-05',
+              ssn: '574567625',
+              email: 'james@unit-finance.com',
+              phone: {
+                countryCode: '1',
+                number: '2025550127',
+              },
+              address: {
+                street: '650 Allerton Street',
+                city: 'Redwood City',
+                state: 'CA',
+                postalCode: '94063',
+                country: 'US',
+              },
+            },
+            {
+              fullName: {
+                first: 'Richard',
+                last: 'Hendricks',
+              },
+              dateOfBirth: '2012-04-03',
+              ssn: '574572795',
+              email: 'richard@unit-finance.com',
+              phone: {
+                countryCode: '1',
+                number: '2025550158',
+              },
+              address: {
+                street: '470 Allerton Street',
+                city: 'Redwood City',
+                state: 'CA',
+                postalCode: '94063',
+                country: 'US',
+              },
+            },
+          ],
+          tags: {
+            userId: '2ab1f266-04b9-41fb-b728-cd1962bca52b',
+          },
+          idempotencyKey: '3a1a33be-4e12-4603-9ed0-820922389fb9',
         },
-        idempotencyKey: '3a1a33be-4e12-4603-9ed0-820922389fb9',
       },
     };
     await createApplication(data);

@@ -13,7 +13,7 @@ const unitReducer = (state, action) => {
     case 'CREATE_APPLICATION':
       return {
         ...state,
-        applications: [action.payload, ...state.applications],
+        applications: [...state.applications, action.payload],
       };
     default:
       return state;
