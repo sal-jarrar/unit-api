@@ -13,7 +13,7 @@ const Header = () => {
               <LinkContainer to='/'>
                 <Nav.Link>Home</Nav.Link>
               </LinkContainer>
-              <LinkContainer to='/about'>
+              <LinkContainer to='/application'>
                 <Nav.Link>Applications</Nav.Link>
               </LinkContainer>
               <LinkContainer to='/contact'>

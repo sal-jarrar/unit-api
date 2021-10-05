@@ -5,6 +5,16 @@ const unitReducer = (state, action) => {
         ...state,
         customers: action.payload,
       };
+    case 'GET_APPLICATIONS':
+      return {
+        ...state,
+        applications: action.payload,
+      };
+    case 'CREATE_APPLICATION':
+      return {
+        ...state,
+        applications: [action.payload, ...state.applications],
+      };
     default:
       return state;
   }

@@ -8,6 +8,7 @@ const API = axios.create({
 const config = {
   headers: {
     Authorization: `Bearer ${token}`,
+    'Content-Type': 'application/vnd.api+json',
   },
 };
 
@@ -16,10 +17,11 @@ const config = {
 //   return req;
 // });
 
-export const createApplication = (appData) =>
-  API.post('/applications', appData);
+export const creatApplication = (appData) =>
+  API.post('/applications', appData, config);
 export const getAllCustomers = () => API.get('/customers', config);
-export const likePost = (id) => API.patch(`/posts/${id}/likePost`);
+export const getAllApplications = () =>
+  API.get(`/applications?page[limit]=10&page[offset]=0&include=org`, config);
 export const updatePost = (id, updatedPost) =>
   API.patch(`/posts/${id}`, updatedPost);
 export const deletePost = (id) => API.delete(`/posts/${id}`);
