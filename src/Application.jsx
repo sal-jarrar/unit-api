@@ -9,6 +9,7 @@ import {
   FormGroup,
   Table,
 } from 'react-bootstrap';
+import ApproveApp from './Model';
 
 const Application = (props) => {
   const { unitState, getApplications, createApplication } =
@@ -34,6 +35,7 @@ const Application = (props) => {
   const [officerState, setOfficerState] = useState('');
   const [officerPostalCode, setOfficerPostalCode] = useState('');
   const [officerCountry, setOfficerCountry] = useState('');
+  const [approved, setApproved] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -163,19 +165,32 @@ const Application = (props) => {
           {unitState.applications &&
             unitState.applications
               .filter((app) => app.type === 'businessApplication')
-              .map((application) => (
-                <tr key={application.id}>
-                  <th scope='row'>{application.id}</th>
-                  <td>{application.type}</td>
-                  <td>{application.attributes.name}</td>
-                  <td>{application.attributes.address.city}</td>
-                  <td>{application.attributes.phone.number}</td>
-                  <td>{application.attributes.entityType}</td>
-                  <td>{application.attributes.status}</td>
-                </tr>
-              ))}
+              .map((application) => {
+                return (
+                  <tr key={application.id}>
+                    <th scope='row'>{application.id}</th>
+                    <td>{application.type}</td>
+                    <td>{application.attributes.name}</td>
+                    <td>{application.attributes.address.city}</td>
+                    <td>{application.attributes.phone.number}</td>
+                    <td>{application.attributes.entityType}</td>
+
+                    {application.attributes.status !== 'Approved' ? (
+                      <ApproveApp
+                        buttonLabel={application.attributes.status}
+                        appId={application.id}
+                      >
+                        <td>{application.attributes.status}</td>
+                      </ApproveApp>
+                    ) : (
+                      <td>{application.attributes.status}</td>
+                    )}
+                  </tr>
+                );
+              })}
         </tbody>
       </Table>
+
       <Row>
         <h4>Create a Business Application</h4>
       </Row>

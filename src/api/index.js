@@ -27,4 +27,5 @@ export const creatAccount = (data) => API.post('/accounts', data, config);
 
 export const addPay = (formData) =>
   API.post('/sandbox/wire-payments', formData, config);
-export const signUp = (formData) => API.post('/user/signup', formData);
+export const approveApplication = (formData, appId) =>
+  API.post(`/sandbox/applications/${appId}/approve`, formData, config);
