@@ -20,6 +20,15 @@ const unitReducer = (state, action) => {
         ...state,
         applications: [...state.applications, action.payload],
       };
+    case 'CREATE_ACCOUNT':
+      return {
+        ...state,
+        applications: [...state.accounts, action.payload],
+      };
+    case 'ADD_PAY':
+      return {
+        ...state,
+      };
     default:
       return state;
   }

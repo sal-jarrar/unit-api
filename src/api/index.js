@@ -23,7 +23,8 @@ export const getAllCustomers = () => API.get('/customers', config);
 export const getAllApplications = () =>
   API.get(`/applications?page[limit]=10&page[offset]=0&include=org`, config);
 export const getAllAccounts = () => API.get('/accounts', config);
-export const deletePost = (id) => API.delete(`/posts/${id}`);
+export const creatAccount = (data) => API.post('/accounts', data, config);
 
-export const signIn = (formData) => API.post('/user/signin', formData);
+export const addPay = (formData) =>
+  API.post('/sandbox/wire-payments', formData, config);
 export const signUp = (formData) => API.post('/user/signup', formData);

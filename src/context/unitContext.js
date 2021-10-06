@@ -2,6 +2,8 @@ import { useReducer, createContext } from 'react';
 import unitReducer from './unitReducer';
 
 import {
+  addPay,
+  creatAccount,
   creatApplication,
   getAllAccounts,
   getAllApplications,
@@ -56,13 +58,37 @@ export const Provider = ({ children }) => {
 
       dispatch({
         type: 'CREATE_APPLICATION',
-        payload: res,
+        payload: res.data,
+      });
+    } catch (e) {
+      console.log('ERROR', e.response.data.errors[0]);
+    }
+  };
+  const createAccount = async (accountData) => {
+    try {
+      const res = await creatAccount(accountData);
+
+      dispatch({
+        type: 'CREATE_ACCOUNT',
+        payload: res.data,
       });
     } catch (e) {
       console.log('ERROR', e.response.data.errors[0]);
     }
   };
 
+  const addPayment = async (p) => {
+    try {
+      const res = await addPay(p);
+
+      dispatch({
+        type: 'ADD_PAY',
+        payload: res.data,
+      });
+    } catch (e) {
+      console.log('ERROR', e.response.data.errors[0]);
+    }
+  };
   return (
     <UnitContext.Provider
       value={{
@@ -71,6 +97,8 @@ export const Provider = ({ children }) => {
         getApplications,
         createApplication,
         getAccounts,
+        createAccount,
+        addPayment,
       }}
     >
       {children}
